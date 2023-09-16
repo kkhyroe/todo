@@ -1,18 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header";
 import styled from "styled-components";
+import Wrapper from "./components/Wrapper";
 
 const Container = styled.div`
-  background-color: whitesmoke;
+  max-width: 500px;
+  padding: 0 1rem;
+  margin: 0 auto;
   height: 100vh;
+  display: flex;
+  flex-flow: column;
 `
 
 function App() {
   return (
     <Container className="App">
       <Header />
+      <Wrapper></Wrapper>
       {/*<header className="App-header">*/}
       {/*  <img src={logo} className="App-logo" alt="logo" />*/}
       {/*  <p>*/}
