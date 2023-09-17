@@ -3,10 +3,11 @@ import './App.css';
 import Header from "./components/Header";
 import styled from "styled-components";
 import Wrapper from "./components/Wrapper";
+import TodoList from "./components/TodoList";
 
 const Container = styled.div`
-  max-width: 500px;
-  padding: 0 1rem;
+  max-width: 600px;
+  padding: 0 1em;
   margin: 0 auto;
   height: 100vh;
   display: flex;
@@ -17,7 +18,7 @@ function App() {
   return (
     <Container className="App">
       <Header />
-      <Wrapper></Wrapper>
+      <Wrapper><TodoList /></Wrapper>
       {/*<header className="App-header">*/}
       {/*  <img src={logo} className="App-logo" alt="logo" />*/}
       {/*  <p>*/}
