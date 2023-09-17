@@ -3,3 +3,5 @@ export type TodoItemProps = {
   text: string;
   checked: boolean;
 };
+
+export type DisplayMode = "all" | "active" | "completed";

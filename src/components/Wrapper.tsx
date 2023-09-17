@@ -5,7 +5,7 @@ const Container = styled.main`
   background-color: white;
   border: 1px solid lightgrey;
 
-  & :is(div, li):not(:last-child) {
+  & > div:not(:last-child) {
     border-bottom: 1px solid lightgrey;
   }
 `;
