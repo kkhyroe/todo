@@ -1,9 +1,11 @@
-import React from 'react';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
 import Header from "./components/Header";
 import styled from "styled-components";
 import Wrapper from "./components/Wrapper";
 import TodoList from "./components/TodoList";
+import Input from "./components/Input";
+import { useStore } from "./store";
 
 const Container = styled.div`
   max-width: 600px;
@@ -12,13 +14,25 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-flow: column;
-`
+`;
 
 function App() {
+  const { store, setStore, addToStore } = useStore();
+  const [displayList, setDisplayList] = useState(true);
+
+  const onDisplayListClick = () => setDisplayList(!displayList);
+
   return (
     <Container className="App">
       <Header />
-      <Wrapper><TodoList /></Wrapper>
+      <Wrapper>
+        <Input
+          addTodo={addToStore}
+          displayState={displayList}
+          onButtonClick={onDisplayListClick}
+        />
+        {displayList && <TodoList store={store} />}
+      </Wrapper>
       {/*<header className="App-header">*/}
       {/*  <img src={logo} className="App-logo" alt="logo" />*/}
       {/*  <p>*/}
