@@ -55,6 +55,7 @@ const Input = ({
         <img src={ExpandIcon} alt="Dropdown Icon" />
       </IconButton>
       <Form
+        data-testid="form"
         onSubmit={(e) => {
           e.preventDefault();
           if (value.trim()) {
@@ -65,6 +66,7 @@ const Input = ({
         }}
       >
         <InputContainer
+          data-testid="input"
           placeholder="What needs to be done?"
           value={value}
           onChange={(e) => setValue(e.target.value)}

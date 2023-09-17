@@ -59,6 +59,7 @@ const TodoItem = ({
           {item.checked ? <CheckedIcon /> : <UnCheckedIcon />}
         </IconWrapper>
         <Input
+          data-testid="checkbox"
           checked={item.checked}
           type="checkbox"
           onChange={() => changeItemState(item.id)}

@@ -95,7 +95,7 @@ const BottomMenu = ({
           />
           <span>All</span>
         </Label>
-        <Label>
+        <Label data-testid="active">
           <Input
             name="mode"
             type="radio"
@@ -104,7 +104,7 @@ const BottomMenu = ({
           />
           <span>Active</span>
         </Label>
-        <Label>
+        <Label data-testid="completed">
           <Input
             name="mode"
             type="radio"
@@ -115,7 +115,9 @@ const BottomMenu = ({
         </Label>
       </InputsContainer>
       <div>
-        <Button onClick={clearCompleted}>Clear completed</Button>
+        <Button data-testid="clear" onClick={clearCompleted}>
+          Clear completed
+        </Button>
       </div>
     </Container>
   );
