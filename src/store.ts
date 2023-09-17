@@ -3,6 +3,7 @@ import { TodoItemProps } from "./types";
 
 export const useStore = () => {
   const [store, setStore] = useState<TodoItemProps[]>([]);
+  const uniqueId = () => Date.now() * Math.random();
 
   useEffect(() => {
     const data = localStorage.getItem("store");
@@ -14,9 +15,19 @@ export const useStore = () => {
   }, [store]);
 
   const addToStore = (value: string) =>
-    setStore([...store].concat({ text: value, checked: false }));
+    setStore(
+      [...store].concat({ id: uniqueId(), text: value, checked: false }),
+    );
 
   const clearStore = () => setStore([]);
 
-  return { store, addToStore, clearStore, setStore };
+  const changeItemState = (id: number) =>
+    setStore(
+      [...store].map((item) => {
+        if (id === item.id) item.checked = !item.checked;
+        return item;
+      }),
+    );
+
+  return { store, addToStore, clearStore, setStore, changeItemState };
 };

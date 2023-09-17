@@ -6,6 +6,7 @@ import Wrapper from "./components/Wrapper";
 import TodoList from "./components/TodoList";
 import Input from "./components/Input";
 import { useStore } from "./store";
+import TodoItem from "./components/TodoItem";
 
 const Container = styled.div`
   max-width: 600px;
@@ -17,7 +18,7 @@ const Container = styled.div`
 `;
 
 function App() {
-  const { store, setStore, addToStore } = useStore();
+  const { store, addToStore, setStore, changeItemState } = useStore();
   const [displayList, setDisplayList] = useState(true);
 
   const onDisplayListClick = () => setDisplayList(!displayList);
@@ -31,7 +32,17 @@ function App() {
           displayState={displayList}
           onButtonClick={onDisplayListClick}
         />
-        {displayList && <TodoList store={store} />}
+        {displayList && (
+          <TodoList>
+            {store.map((item) => (
+              <TodoItem
+                key={item.id}
+                item={item}
+                changeItemState={changeItemState}
+              />
+            ))}
+          </TodoList>
+        )}
       </Wrapper>
       {/*<header className="App-header">*/}
       {/*  <img src={logo} className="App-logo" alt="logo" />*/}

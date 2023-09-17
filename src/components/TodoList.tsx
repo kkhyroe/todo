@@ -1,20 +1,15 @@
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
 import { TodoItemProps } from "../types";
+import { ReactNode } from "react";
 
 const List = styled.ul`
   margin: 0;
   padding: 0;
 `;
 
-const TodoList = ({ store }: { store: TodoItemProps[] }) => {
-  return (
-    <List>
-      {store.map((item) => (
-        <TodoItem text={item.text} />
-      ))}
-    </List>
-  );
+const TodoList = ({ children }: { children: ReactNode }) => {
+  return <List>{children}</List>;
 };
 
 export default TodoList;
