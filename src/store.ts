@@ -11,7 +11,7 @@ export const useStore = () => {
   }, []);
 
   useEffect(() => {
-    if (store.length) localStorage.setItem("store", JSON.stringify(store));
+    localStorage.setItem("store", JSON.stringify(store));
   }, [store]);
 
   const addToStore = (value: string) =>
