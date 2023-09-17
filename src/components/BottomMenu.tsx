@@ -5,8 +5,26 @@ import { DisplayMode } from "../types";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  //padding: 0.5em;
+  padding: 0 0.5em;
+  height: 3rem;
+  align-items: center;
   border-top: 1px solid lightgrey;
+
+  @media (max-width: 600px) {
+    padding: 0.5em;
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+    height: fit-content;
+  }
+
+  & > div:first-child {
+    text-align: start;
+  }
+
+  & > div:last-child {
+    text-align: end;
+  }
 `;
 
 const Button = styled.button`
@@ -14,6 +32,19 @@ const Button = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+  transition: 500ms all;
+  height: 2rem;
+
+  &:hover {
+    background-color: linen;
+  }
+`;
+
+const InputsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  gap: 0.5rem;
 `;
 
 const Input = styled.input`
@@ -22,25 +53,39 @@ const Input = styled.input`
 
 const Label = styled.label`
   cursor: pointer;
+  border-radius: 2px;
+  transition: 500ms all;
+  height: 2rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  &:hover {
+    background-color: linen;
+  }
+
+  &:has(input:checked) {
+    border: 1px solid bisque;
+  }
 `;
 
 const BottomMenu = ({
   itemsLeft,
   changeMode,
+  clearCompleted,
 }: {
   itemsLeft: number;
   changeMode: (value: DisplayMode) => void;
+  clearCompleted: () => void;
 }) => {
   return (
     <Container>
       <div>
-        {!!itemsLeft && (
-          <span>
-            {itemsLeft} {itemsLeft === 1 ? "item" : "items"} left
-          </span>
-        )}
+        <span>
+          {itemsLeft} {itemsLeft === 1 ? "item" : "items"} left
+        </span>
       </div>
-      <div>
+      <InputsContainer>
         <Label>
           <Input
             name="mode"
@@ -68,9 +113,9 @@ const BottomMenu = ({
           />
           <span>Completed</span>
         </Label>
-      </div>
+      </InputsContainer>
       <div>
-        <Button>Clear completed</Button>
+        <Button onClick={clearCompleted}>Clear completed</Button>
       </div>
     </Container>
   );

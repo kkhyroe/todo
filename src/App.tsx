@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import styled from "styled-components";
 import Wrapper from "./components/Wrapper";
@@ -15,27 +14,29 @@ const Container = styled.div`
   padding: 0 1em;
   margin: 0 auto;
   height: 100vh;
+  text-align: center;
   display: flex;
   flex-flow: column;
 `;
 
 function App() {
-  const { store, addToStore, setStore, changeItemState } = useStore();
+  const { store, addToStore, clearCompleted, changeItemState } = useStore();
   const [displayList, setDisplayList] = useState(true);
   const [displayMode, setDisplayMode] = useState<DisplayMode>("all");
 
   const itemsLeft = store.filter((item) => !item.checked).length;
 
-  const onDisplayListClick = () => setDisplayList(!displayList);
+  const onDisplayListClick = (value?: boolean) =>
+    setDisplayList(value || !displayList);
 
   return (
-    <Container className="App">
+    <Container>
       <Header />
       <Wrapper>
         <Input
           addTodo={addToStore}
           displayState={displayList}
-          onButtonClick={onDisplayListClick}
+          onDisplayStateChange={onDisplayListClick}
         />
         {displayList && (
           <>
@@ -62,6 +63,7 @@ function App() {
             <BottomMenu
               itemsLeft={itemsLeft}
               changeMode={(value) => setDisplayMode(value)}
+              clearCompleted={clearCompleted}
             />
           </>
         )}

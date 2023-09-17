@@ -19,7 +19,8 @@ export const useStore = () => {
       [...store].concat({ id: uniqueId(), text: value, checked: false }),
     );
 
-  const clearStore = () => setStore([]);
+  const clearCompleted = () =>
+    setStore([...store].filter((item) => !item.checked));
 
   const changeItemState = (id: number) =>
     setStore(
@@ -29,5 +30,5 @@ export const useStore = () => {
       }),
     );
 
-  return { store, addToStore, clearStore, setStore, changeItemState };
+  return { store, addToStore, clearCompleted, setStore, changeItemState };
 };
