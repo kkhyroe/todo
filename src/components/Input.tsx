@@ -25,6 +25,7 @@ const IconButton = styled.button<{ $active?: boolean }>`
 const Form = styled.form`
   width: 100%;
   display: flex;
+  position: relative;
 `;
 
 const InputContainer = styled.input`
@@ -32,10 +33,29 @@ const InputContainer = styled.input`
   outline: none;
   border: none;
   font-size: x-large;
+  background: transparent;
+  z-index: 2;
 
   &::placeholder {
     font-style: italic;
   }
+`;
+
+const Kbd = styled.kbd`
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  align-self: center;
+
+  opacity: 0.3;
+
+  background-color: #eee;
+  border-radius: 3px;
+  border: 1px solid #b4b4b4;
+  color: #333;
+  font-size: 0.85em;
+  font-weight: 700;
+  padding: 2px 4px;
 `;
 
 const Input = ({
@@ -54,6 +74,7 @@ const Input = ({
       <IconButton onClick={() => onDisplayStateChange()} $active={displayState}>
         <img src={ExpandIcon} alt="Dropdown Icon" />
       </IconButton>
+
       <Form
         data-testid="form"
         onSubmit={(e) => {
@@ -65,6 +86,7 @@ const Input = ({
           }
         }}
       >
+        <Kbd>Enter</Kbd>
         <InputContainer
           data-testid="input"
           placeholder="What needs to be done?"

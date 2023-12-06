@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
 import styled from "styled-components";
-import Wrapper from "./components/Wrapper";
-import TodoList from "./components/TodoList";
-import Input from "./components/Input";
 import { useStore } from "./store";
+import Header from "./components/Header";
+import Wrapper from "./components/Wrapper";
+import Input from "./components/Input";
+import { DisplayMode } from "./types";
+import TodoList from "./components/TodoList";
 import TodoItem from "./components/TodoItem";
 import BottomMenu from "./components/BottomMenu";
-import { DisplayMode } from "./types";
 
 const Container = styled.div`
   max-width: 600px;
@@ -52,7 +52,7 @@ function App() {
                       return true;
                   }
                 })
-                .map((item) => (
+                .map((item, index) => (
                   <TodoItem
                     key={item.id}
                     item={item}

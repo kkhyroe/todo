@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import styled from "styled-components";
 
 const Container = styled.main`
@@ -10,7 +10,7 @@ const Container = styled.main`
   }
 `;
 
-const Wrapper = ({ children }: { children?: ReactNode }) => (
+const Wrapper = ({ children }: PropsWithChildren) => (
   <Container>{children}</Container>
 );
 

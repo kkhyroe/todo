@@ -34,10 +34,16 @@ const Button = styled.button`
   cursor: pointer;
   transition: 500ms all;
   height: 2rem;
+  width: fit-content;
+  justify-self: right;
 
   &:hover {
     background-color: linen;
   }
+`;
+
+const Span = styled.span`
+  text-align: left;
 `;
 
 const BottomMenu = ({
@@ -51,17 +57,13 @@ const BottomMenu = ({
 }) => {
   return (
     <Container>
-      <div>
-        <span>
-          {itemsLeft} {itemsLeft === 1 ? "item" : "items"} left
-        </span>
-      </div>
+      <Span>
+        {itemsLeft} {itemsLeft === 1 ? "item" : "items"} left
+      </Span>
       <ModeChanger changeMode={changeMode} />
-      <div>
-        <Button data-testid="clear" onClick={clearCompleted}>
-          Clear completed
-        </Button>
-      </div>
+      <Button data-testid="clear" onClick={clearCompleted}>
+        Clear completed
+      </Button>
     </Container>
   );
 };

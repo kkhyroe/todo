@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 
 const List = styled.ul`
   margin: 0;
@@ -10,7 +10,7 @@ const List = styled.ul`
   }
 `;
 
-const TodoList = ({ children }: { children: ReactNode }) => {
+const TodoList = ({ children }: PropsWithChildren) => {
   return <List>{children}</List>;
 };
 

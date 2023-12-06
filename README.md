@@ -1,20 +1,17 @@
-# TODO приложение на React 
-С использованием TypeScript и React Testing Library
+# TODO React app
+It's using TypeScript, React Testing Library, Styled-components and localStorage for state management.
 
-## Запуск проекта
+## Check out published version
+
+https://todo-lemon-pi.vercel.app/
+
+## Getting started
 
 ### `npm i && npm run start`
 
-Загружает библиотеки из запускает проект.\
-Откройте [http://localhost:3000](http://localhost:3000) для просмотра в браузере.
-
-Страница перезагрузиться, если вы поменяете что-нибудь в коде.
+Downloads dependencies and launches the project.\
 
 ### `npm test`
 
-Запускает тестирование основного функционала приложения.
-
-## Ссылка на рабочую версию
-
-[Click](https://todo-lemon-pi.vercel.app/)
+Runs the tests for the main functionality of the application.
 
