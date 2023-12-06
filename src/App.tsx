@@ -52,7 +52,7 @@ function App() {
                       return true;
                   }
                 })
-                .map((item, index) => (
+                .map((item) => (
                   <TodoItem
                     key={item.id}
                     item={item}
