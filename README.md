@@ -9,7 +9,7 @@ https://todo-lemon-pi.vercel.app/
 
 ### `npm i && npm run start`
 
-Downloads dependencies and launches the project.\
+Downloads dependencies and launches the project.
 
 ### `npm test`
 
